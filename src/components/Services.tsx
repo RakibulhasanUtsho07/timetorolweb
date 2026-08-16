@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-
 import Link from "next/link";
 import {
   ArrowRight,
@@ -20,12 +19,14 @@ interface Service {
   image: string;
   icon: React.ReactNode;
   slug: string;
+  titleImage: string;
 }
 
 const services: Service[] = [
   {
     id: 1,
     title: "Cinematography",
+    titleImage: "/cinemotography.png",
     slug: "cinematography",
     description:
       "We don’t just record footage, we craft visual stories. We elevate your brand with an international-standard aesthetic.",
@@ -36,6 +37,7 @@ const services: Service[] = [
   {
     id: 2,
     title: "Dronegraphy",
+    titleImage: "/dronegraphy.png",
     slug: "dronegraphy",
     description:
       "Elevate your perspective with breathtaking 4K aerial visuals. We capture the world from angles that demand attention.",
@@ -46,6 +48,7 @@ const services: Service[] = [
   {
     id: 3,
     title: "Video Editing",
+    titleImage: "/videoediting.png",
     slug: "videoediting",
     description:
       "From Cinematic Color Grading to Text Animation, SaaS & UI Animations. We turn static ideas into high-converting motion art.",
@@ -56,6 +59,7 @@ const services: Service[] = [
   {
     id: 4,
     title: "OVC Commercial",
+    titleImage: "/ovc.png",
     slug: "ovc-commercial",
     description:
       "We engineer high-converting Online Video Commercials (OVC) that capture attention in seconds and turn passive viewers into paying clients.",
@@ -94,78 +98,10 @@ const Services: React.FC = () => {
       "
     >
       {/* =====================================================
-          BACKGROUND IMAGE LAYER
+         BACKGROUND IMAGE LAYER
       ====================================================== */}
 
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        {/* Left Background Image */}
-        <div
-          className="
-            absolute
-            -left-[15%]
-            top-[5%]
-            h-[550px]
-            w-[700px]
-            overflow-hidden
-            opacity-[0.13]
-            blur-[2px]
-          "
-        >
-          <Image
-            src={backgroundImages[0]}
-            alt=""
-            fill
-            priority={false}
-            className="object-cover"
-            sizes="700px"
-          />
-        </div>
-
-        {/* Center Background Image */}
-        <div
-          className="
-            absolute
-            left-1/2
-            top-[28%]
-            h-[700px]
-            w-[950px]
-            -translate-x-1/2
-            overflow-hidden
-            opacity-[0.10]
-            blur-[3px]
-          "
-        >
-          <Image
-            src={backgroundImages[1]}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="950px"
-          />
-        </div>
-
-        {/* Right Background Image */}
-        <div
-          className="
-            absolute
-            -right-[15%]
-            bottom-[4%]
-            h-[600px]
-            w-[750px]
-            overflow-hidden
-            opacity-[0.12]
-            blur-[2px]
-          "
-        >
-          <Image
-            src={backgroundImages[2]}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="750px"
-          />
-        </div>
-
         {/* Main Dark Overlay */}
         <div className="absolute inset-0 bg-[#011e32]/85" />
 
@@ -202,7 +138,7 @@ const Services: React.FC = () => {
       </div>
 
       {/* =====================================================
-          MAIN CONTAINER
+         MAIN CONTAINER
       ====================================================== */}
 
       <div
@@ -232,13 +168,12 @@ const Services: React.FC = () => {
           "
         >
           {/* Badge */}
-
           <div
             className="
               mb-4
               inline-flex
               items-center
-              gap-2
+              gap-1.5
               rounded-full
               border
               border-sky-400/25
@@ -253,13 +188,20 @@ const Services: React.FC = () => {
               backdrop-blur-sm
             "
           >
-            <Sparkles size={13} />
-
+            {/* Icon */}
+            <span className="relative flex items-center justify-center w-5 h-5 overflow-hidden shrink-0">
+              <Image
+                src="/timetorolpng.png"
+                alt=""
+                fill
+                sizes="20px"
+                className="object-contain scale-150"
+              />
+            </span>
             Our Services
           </div>
 
           {/* Heading */}
-
           <h2
             className="
               text-[34px]
@@ -277,7 +219,6 @@ const Services: React.FC = () => {
           </h2>
 
           {/* Description */}
-
           <p
             className="
               mx-auto
@@ -309,10 +250,7 @@ const Services: React.FC = () => {
           "
         >
           {services.slice(0, 3).map((service) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-            />
+            <ServiceCard key={service.id} service={service} />
           ))}
         </div>
 
@@ -324,14 +262,6 @@ const Services: React.FC = () => {
           <div className="w-full sm:max-w-[calc(50%-10px)] lg:max-w-[calc(33.333%-13px)]">
             <ServiceCard service={services[3]} />
           </div>
-        </div>
-
-        {/* ===================================================
-            FOUNDER CARD — MD TAWHID
-        ==================================================== */}
-
-        <div className="mt-5 flex justify-center">
-          <FounderCard />
         </div>
       </div>
     </section>
@@ -353,14 +283,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         group
         relative
         flex
-        h-full
         flex-col
         overflow-hidden
         rounded-[26px]
         border
         border-sky-100/30
         bg-[#bce7fb]
-        p-3
+        p-2.5
         shadow-[0_15px_50px_rgba(0,0,0,0.20)]
         transition-all
         duration-500
@@ -370,7 +299,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       "
     >
       {/* ===================================================
-          IMAGE
+         IMAGE
       ==================================================== */}
 
       <div
@@ -394,15 +323,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
             ease-out
             group-hover:scale-[1.05]
           "
-          sizes="
-            (max-width: 640px) 100vw,
-            (max-width: 1024px) 50vw,
-            33vw
-          "
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
 
         {/* Image Overlay */}
-
         <div
           className="
             pointer-events-none
@@ -416,7 +340,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         />
 
         {/* Icon */}
-
         <div
           className="
             absolute
@@ -445,7 +368,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       </div>
 
       {/* ===================================================
-          CONTENT
+         CONTENT (Updated: Text Title instead of Image)
       ==================================================== */}
 
       <div
@@ -453,155 +376,31 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
           flex
           flex-1
           flex-col
-          px-3
-          pb-4
+          items-center
           pt-4
+          pb-2
           text-center
-          sm:px-4
+          px-2
         "
       >
-        {/* Title */}
-
-        <h3
-          className="
-            text-[23px]
-            font-extrabold
-            leading-tight
-            tracking-[-0.5px]
-            text-[#0077bd]
-            sm:text-[24px]
-          "
-        >
+        {/* Title Text (Replaced Image) */}
+        <h3 className="mb-2.5 text-[20px] font-extrabold tracking-tight text-[#00699b] sm:text-[22px]">
           {service.title}
         </h3>
 
         {/* Description */}
-
         <p
           className="
             mx-auto
-            mt-4
             max-w-[315px]
-            text-[15px]
+            text-[14px]
             font-medium
-            leading-[1.35]
+            leading-snug
             text-[#173d52]
-            sm:text-[16px]
+            sm:text-[14.5px]
           "
         >
           {service.description}
-        </p>
-
-        {/* Explore */}
-
-        
-      </div>
-    </article>
-  );
-};
-
-/* =========================================================
-   FOUNDER CARD
-========================================================= */
-
-const FounderCard: React.FC = () => {
-  return (
-    <article
-      className="
-        group
-        relative
-        w-full
-        overflow-hidden
-        rounded-[26px]
-        border
-        border-sky-100/30
-        bg-[#bce7fb]
-        p-3
-        shadow-[0_15px_50px_rgba(0,0,0,0.20)]
-        transition-all
-        duration-500
-        hover:-translate-y-2
-        hover:border-sky-100/60
-        hover:shadow-[0_25px_65px_rgba(0,150,220,0.22)]
-        sm:w-[calc(50%-10px)]
-        lg:w-[calc(33.333%-13px)]
-      "
-    >
-      {/* ===================================================
-          FOUNDER IMAGE
-      ==================================================== */}
-
-      <div
-        className="
-          relative
-          aspect-[4/3]
-          w-full
-          overflow-hidden
-          rounded-[20px]
-          bg-[#07547a]
-        "
-      >
-        <Image
-          src="/tawhid.jpeg"
-          alt="Md Tawhid"
-          fill
-          priority
-          className="
-            object-cover
-            object-center
-            transition-transform
-            duration-700
-            ease-out
-            group-hover:scale-[1.03]
-          "
-          sizes="
-            (max-width: 640px) 100vw,
-            (max-width: 1024px) 50vw,
-            33vw
-          "
-        />
-      </div>
-
-      {/* ===================================================
-          FOUNDER CONTENT
-      ==================================================== */}
-
-      <div
-        className="
-          flex
-          flex-col
-          items-center
-          justify-center
-          px-3
-          pb-4
-          pt-3
-          text-center
-        "
-      >
-        <h3
-          className="
-            text-[23px]
-            font-extrabold
-            leading-tight
-            tracking-[-0.5px]
-            text-[#0077bd]
-            sm:text-[24px]
-          "
-        >
-          Md Tawhid
-        </h3>
-
-        <p
-          className="
-            mt-0.5
-            text-[15px]
-            font-medium
-            leading-tight
-            text-[#173d52]
-            sm:text-[16px]
-          "
-        >
-          Founder of timetoroI.com
         </p>
       </div>
     </article>

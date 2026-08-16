@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
   return (
     <section className="relative w-full overflow-hidden bg-[#011e32] text-white">
       {/* =========================================
-          BACKGROUND
+         BACKGROUND
       ========================================== */}
       <div className="pointer-events-none absolute inset-0 z-0">
         {/* Main center glow */}
@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* =========================================
-          MAIN CONTAINER
+         MAIN CONTAINER
       ========================================== */}
       <div
         className="
@@ -117,7 +117,7 @@ const Hero: React.FC = () => {
         >
           {/* BOOK NOW */}
           <Link
-            href="/book"
+            href="/contact"
             className="
               rounded-[10px]
               border-[1.5px]
@@ -143,7 +143,8 @@ const Hero: React.FC = () => {
 
           {/* RECENT WORK */}
           <Link
-            href="/work"
+            href="https://www.youtube.com/@timetorol"
+            target="_blank"
             className="
               rounded-[10px]
               bg-[#0088cc]
@@ -186,7 +187,7 @@ const Hero: React.FC = () => {
           "
         >
           {/* =====================================
-              LEFT IMAGE
+              LEFT IMAGE (বর্ডার বা স্টক বাড়িয়ে দেওয়া হয়েছে)
           ====================================== */}
           <div
             className="
@@ -197,26 +198,27 @@ const Hero: React.FC = () => {
               aspect-[16/9]
               overflow-hidden
               rounded-[14px]
-              
+              border-[1.5px]
+              border-sky-300/80
               bg-[#011e32]
-              shadow-[0_8px_30px_rgba(0,0,0,0.28)]
+              shadow-[0_0_35px_rgba(0,163,224,0.32)]
               sm:rounded-[17px]
+              sm:border-[2px]
               md:rounded-[20px]
             "
           >
             <Image
-              src="/আপনার জন্য কোন university ভালো.png"
+              src="/university.jpeg"
               alt="University Project"
               fill
               priority
               className="
                 object-cover
-                
-                scale-[1.65]
+                scale-[1.05]
                 transition-transform
                 duration-500
                 ease-out
-                group-hover:scale-[1.75]
+                group-hover:scale-[1.14]
               "
               sizes="(max-width: 768px) 29vw, 270px"
             />
@@ -238,7 +240,7 @@ const Hero: React.FC = () => {
               border-[1.5px]
               border-sky-300/80
               bg-[#011e32]
-              shadow-[0_0_35px_rgba(0,163,224,0.32)]
+              shadow-[0_0_35px_rgba(0,163,224,0.40)]
               sm:mx-[14px]
               sm:rounded-[20px]
               md:mx-[16px]
@@ -288,9 +290,9 @@ const Hero: React.FC = () => {
               overflow-hidden
               rounded-[14px]
               border
-              border-slate-400/60
+              border-sky-300/80
               bg-[#011e32]
-              shadow-[0_8px_30px_rgba(0,0,0,0.28)]
+              shadow-[0_0_35px_rgba(0,163,224,0.32)]
               sm:rounded-[17px]
               md:rounded-[20px]
             "

@@ -12,32 +12,16 @@ const Navbar: React.FC = () => {
       <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between md:justify-start h-24 md:h-28 md:gap-16">
           
-          {/* ================= Logo Section ================= */}
-          <Link href="/" className="flex flex-col shrink-0 group select-none">
-            {/* Main Logo Text with BIGGER Image */}
-            <div className="flex items-center font-sans font-bold text-[2.5rem] md:text-[3.25rem] tracking-tight leading-none">
-              <span className="text-white lg:-mr-4">work t</span>
-              
-              {/* Aperture Logo Icon - zoomed + zero margin so it sits flush like a letter, no gap */}
-              <span className="relative flex justify-center items-center w-14 h-14 md:w-20 md:h-20 mx-0 shrink-0 overflow-hidden">
-                <Image
-                  src="/timetorolpng.png"
-                  alt="Time To Rol Icon"
-                  fill
-                  sizes="(max-width: 768px) 56px, 80px"
-                  className="object-contain scale-150 my-auto" // scale-150 zooms in to remove the empty space baked into the PNG
-                  priority
-                />
-              </span>
-              
-              <span className="text-[#00A3E0] lg:-ml-7">rol</span>
-            </div>
-            
-            {/* Tagline text - Aligned under the text properly */}
-            <div className="text-xs md:text-[14px] font-medium tracking-wider lg:-mt-5 md:mt-0 pl-[60px] md:pl-[85px]">
-              <span className="text-[#00A3E0]">Grow </span>
-              <span className="text-gray-200">Your Brand</span>
-            </div>
+          {/* ================= Logo Section (single logo.png image) ================= */}
+          <Link href="/" className=" shrink-0 group select-none">
+            <Image
+              src="/logo.png"
+              alt="Work To Rol"
+              width={300}
+              height={100}
+              priority
+              className="mt-4 object-contain"
+            />
           </Link>
 
           {/* ================= Desktop Navigation Links ================= */}
@@ -54,12 +38,17 @@ const Navbar: React.FC = () => {
             >
               SERVICES
             </Link>
+            
+            {/* WORK Link Updated for YouTube */}
             <Link
-              href="/team"
+              href="https://www.youtube.com/@timetorol"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white hover:text-[#00A3E0] transition-colors duration-200"
             >
-              TEAM
+              WORK
             </Link>
+            
             <Link
               href="/contact"
               className="text-white hover:text-[#00A3E0] transition-colors duration-200"
@@ -120,13 +109,18 @@ const Navbar: React.FC = () => {
           >
             SERVICES
           </Link>
+          
+          {/* WORK Link Updated for YouTube in Mobile Menu */}
           <Link
-            href="/team"
+            href="https://www.youtube.com/@timetorol"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setIsOpen(false)}
             className="block text-white hover:text-[#00A3E0] font-bold tracking-wider uppercase py-1"
           >
-            TEAM
+            WORK
           </Link>
+
           <Link
             href="/contact"
             onClick={() => setIsOpen(false)}
