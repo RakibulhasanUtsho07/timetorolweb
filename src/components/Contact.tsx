@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { Mail, Phone } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { BsInstagram, BsYoutube } from 'react-icons/bs';
-import { FaFacebook } from 'react-icons/fa';
+import { FaFacebook, FaWhatsapp } from 'react-icons/fa';
 import { LiaLinkedin } from 'react-icons/lia';
 import Image from 'next/image';
 
@@ -89,25 +89,40 @@ const FooterAndFounder: React.FC = () => {
       </div>
 
       {/* ===================================================
-          FOOTER SECTION (বর্ডার মুছে দেওয়া হয়েছে)
+          FOOTER SECTION 
       ==================================================== */}
       <footer className="w-full py-12 px-6 md:px-12">
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0">
           
           {/* Left: Contact Info */}
           <div className="flex flex-col gap-3 text-white/90">
-            <div className="flex items-center gap-3">
-              <div className="bg-[#0077b6] p-2 rounded-full shadow-md">
-                <Phone size={16} className="text-white" />
+            
+            {/* WhatsApp Link */}
+            <a 
+              href="https://wa.me/8801324211913" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group cursor-pointer hover:text-white transition-colors"
+            >
+              <div className="bg-[#0077b6] p-2 rounded-full shadow-md group-hover:bg-[#005f90] transition-colors">
+                <FaWhatsapp size={16} className="text-white" />
               </div>
-              <span className="font-medium tracking-wide">+880 1324211913</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="bg-[#0077b6] p-2 rounded-full shadow-md">
+              <span className="font-medium tracking-wide">Whatsapp</span>
+            </a>
+            
+            {/* Email Link - সরাসরি Gmail ওপেন করার লিংক দেওয়া হলো */}
+            <a 
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=businesswithtawhid@gmail.com"
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group cursor-pointer hover:text-white transition-colors"
+            >
+              <div className="bg-[#0077b6] p-2 rounded-full shadow-md group-hover:bg-[#005f90] transition-colors">
                 <Mail size={16} className="text-white" />
               </div>
               <span className="font-medium tracking-wide">businesswithtawhid@gmail.com</span>
-            </div>
+            </a>
+            
           </div>
 
           {/* Center: Brand Logo/Name */}

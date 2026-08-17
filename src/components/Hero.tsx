@@ -1,10 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 const Hero: React.FC = () => {
+  // সেন্টার এবং রাইট ইমেজের হোভার স্টেট ট্র্যাক করার জন্য আলাদা useState
+  const [isCenterHovered, setIsCenterHovered] = useState(false);
+  const [isRightHovered, setIsRightHovered] = useState(false);
+
   return (
     <section className="relative w-full overflow-hidden bg-[#011e32] text-white">
       {/* =========================================
@@ -187,7 +191,7 @@ const Hero: React.FC = () => {
           "
         >
           {/* =====================================
-              LEFT IMAGE (বর্ডার বা স্টক বাড়িয়ে দেওয়া হয়েছে)
+              LEFT IMAGE
           ====================================== */}
           <div
             className="
@@ -208,7 +212,7 @@ const Hero: React.FC = () => {
             "
           >
             <Image
-              src="/university.jpeg"
+              src="/IMNNJyDXT_-N4.png"
               alt="University Project"
               fill
               priority
@@ -225,14 +229,20 @@ const Hero: React.FC = () => {
           </div>
 
           {/* =====================================
-              CENTER IMAGE
+              CENTER IMAGE (YOUTUBE HOVER)
           ====================================== */}
-          <div
+          <Link
+            href="https://youtube.com/shorts/WDMvyTWzsrg?si=1MZZFYbrxfCIU1TA"
+            target="_blank"
+            rel="noopener noreferrer"
+            onMouseEnter={() => setIsCenterHovered(true)}
+            onMouseLeave={() => setIsCenterHovered(false)}
             className="
               group
               relative
               z-20
               mx-[10px]
+              block
               w-[42%]
               aspect-[16/9]
               overflow-hidden
@@ -248,20 +258,95 @@ const Hero: React.FC = () => {
               md:border-[2px]
             "
           >
-            <Image
-              src="/IMNNJyDXT_-N4.png"
-              alt="Main Project Showcase"
-              fill
-              priority
+            {!isCenterHovered ? (
+              <Image
+                src="/university.jpeg"
+                alt="Main Project Showcase"
+                fill
+                priority
+                className="
+                  object-cover
+                  transition-transform
+                  duration-500
+                  ease-out
+                  group-hover:scale-[1.03]
+                "
+                sizes="(max-width: 768px) 42vw, 390px"
+              />
+            ) : (
+              <iframe
+                src="https://www.youtube.com/embed/WDMvyTWzsrg?autoplay=1&mute=1&loop=1&playlist=WDMvyTWzsrg&controls=0"
+                title="YouTube video player"
+                className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            )}
+
+            <div
               className="
-                object-cover
-                transition-transform
-                duration-500
-                ease-out
-                group-hover:scale-[1.03]
+                pointer-events-none
+                absolute
+                inset-0
+                bg-gradient-to-t
+                from-[#011e32]/10
+                via-transparent
+                to-white/[0.03]
               "
-              sizes="(max-width: 768px) 42vw, 390px"
             />
+          </Link>
+
+          {/* =====================================
+              RIGHT IMAGE (YOUTUBE HOVER)
+          ====================================== */}
+          <Link
+            href="https://youtube.com/shorts/TI9lZZ5eNvQ?si=fplKLhlCUeeOH9pG"
+            target="_blank"
+            rel="noopener noreferrer"
+            onMouseEnter={() => setIsRightHovered(true)}
+            onMouseLeave={() => setIsRightHovered(false)}
+            className="
+              group
+              relative
+              z-0
+              block
+              w-[29%]
+              aspect-[16/9]
+              overflow-hidden
+              rounded-[14px]
+              border
+              border-sky-300/80
+              bg-[#011e32]
+              shadow-[0_0_35px_rgba(0,163,224,0.32)]
+              sm:rounded-[17px]
+              md:rounded-[20px]
+            "
+          >
+            {!isRightHovered ? (
+              <Image
+                src="/1786484217502.png"
+                alt="Setup Project"
+                fill
+                priority
+                className="
+                  object-cover
+                  scale-[1.06]
+                  transition-transform
+                  duration-500
+                  ease-out
+                  group-hover:scale-[1.12]
+                "
+                sizes="(max-width: 768px) 29vw, 270px"
+              />
+            ) : (
+              <iframe
+                src="https://www.youtube.com/embed/TI9lZZ5eNvQ?autoplay=1&mute=1&loop=1&playlist=TI9lZZ5eNvQ&controls=0"
+                title="YouTube video player"
+                className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            )}
 
             {/* Subtle overlay */}
             <div
@@ -275,44 +360,7 @@ const Hero: React.FC = () => {
                 to-white/[0.03]
               "
             />
-          </div>
-
-          {/* =====================================
-              RIGHT IMAGE
-          ====================================== */}
-          <div
-            className="
-              group
-              relative
-              z-0
-              w-[29%]
-              aspect-[16/9]
-              overflow-hidden
-              rounded-[14px]
-              border
-              border-sky-300/80
-              bg-[#011e32]
-              shadow-[0_0_35px_rgba(0,163,224,0.32)]
-              sm:rounded-[17px]
-              md:rounded-[20px]
-            "
-          >
-            <Image
-              src="/1786484217502.png"
-              alt="Setup Project"
-              fill
-              priority
-              className="
-                object-cover
-                scale-[1.06]
-                transition-transform
-                duration-500
-                ease-out
-                group-hover:scale-[1.12]
-              "
-              sizes="(max-width: 768px) 29vw, 270px"
-            />
-          </div>
+          </Link>
         </div>
       </div>
     </section>
