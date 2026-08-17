@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Hero: React.FC = () => {
-  // সেন্টার এবং রাইট ইমেজের হোভার স্টেট ট্র্যাক করার জন্য আলাদা useState
+  // লেফট, সেন্টার এবং রাইট ইমেজের হোভার স্টেট ট্র্যাক করার জন্য আলাদা useState
+  const [isLeftHovered, setIsLeftHovered] = useState(false);
   const [isCenterHovered, setIsCenterHovered] = useState(false);
   const [isRightHovered, setIsRightHovered] = useState(false);
 
@@ -191,13 +192,19 @@ const Hero: React.FC = () => {
           "
         >
           {/* =====================================
-              LEFT IMAGE
+              LEFT IMAGE (YOUTUBE HOVER)
           ====================================== */}
-          <div
+          <Link
+            href="https://youtu.be/BnOmZ1a7Kuw?si=5mIXRuW7flGQJlWH"
+            target="_blank"
+            rel="noopener noreferrer"
+            onMouseEnter={() => setIsLeftHovered(true)}
+            onMouseLeave={() => setIsLeftHovered(false)}
             className="
               group
               relative
               z-0
+              block
               w-[29%]
               aspect-[16/9]
               overflow-hidden
@@ -211,22 +218,45 @@ const Hero: React.FC = () => {
               md:rounded-[20px]
             "
           >
-            <Image
-              src="/IMNNJyDXT_-N4.png"
-              alt="University Project"
-              fill
-              priority
+            {!isLeftHovered ? (
+              <Image
+                src="/kacchi.png"
+                alt="University Project"
+                fill
+                priority
+                className="
+                  object-cover
+                  scale-[1.05]
+                  transition-transform
+                  duration-500
+                  ease-out
+                  group-hover:scale-[1.14]
+                "
+                sizes="(max-width: 768px) 29vw, 270px"
+              />
+            ) : (
+              <iframe
+                src="https://www.youtube.com/embed/BnOmZ1a7Kuw?autoplay=1&mute=1&loop=1&playlist=BnOmZ1a7Kuw&controls=0"
+                title="YouTube video player"
+                className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            )}
+            
+            {/* Subtle overlay */}
+            <div
               className="
-                object-cover
-                scale-[1.05]
-                transition-transform
-                duration-500
-                ease-out
-                group-hover:scale-[1.14]
+                pointer-events-none
+                absolute
+                inset-0
+                bg-gradient-to-t
+                from-[#011e32]/10
+                via-transparent
+                to-white/[0.03]
               "
-              sizes="(max-width: 768px) 29vw, 270px"
             />
-          </div>
+          </Link>
 
           {/* =====================================
               CENTER IMAGE (YOUTUBE HOVER)
